@@ -40,14 +40,30 @@ const userList = [
 // Write your code here
 
 class SimpleTodos extends Component {
+  state: {
+    todoList: userList,
+  }
+
+  deleteTodo = id => {
+    const {todoList} = this.state
+    const newTodo = todoList.filter(eachTodo => eachTodo.id !== id)
+    this.setState({todoList: newTodo})
+  }
+
   render() {
+    const {todoList} = this.state
+
     return (
       <div>
         <div>
           <h1>Simple Todos</h1>
           <ul>
-            {userList.map(eachTodo => (
-              <TodoItem key={eachTodo.id} todoDetails={eachTodo} />
+            {todoList.map(eachTodo => (
+              <TodoItem
+                key={eachTodo.id}
+                todoDetails={eachTodo}
+                deleteTodo={this.deleteTodo}
+              />
             ))}
           </ul>
         </div>
