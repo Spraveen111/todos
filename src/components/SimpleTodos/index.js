@@ -61,7 +61,7 @@ class SimpleTodos extends Component {
             {todoList.map(eachTodo => (
               <TodoItem
                 key={eachTodo.id}
-                todoDetails={eachTodo}
+                userDetails={eachTodo}
                 deleteTodo={this.deleteTodo}
               />
             ))}
